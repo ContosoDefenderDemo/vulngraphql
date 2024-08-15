@@ -24,3 +24,15 @@ jobs:
     - name: Push Docker image to Azure Container Registry
       run: |
         docker push ${{ secrets.REGISTRY_NAME }}.azurecr.io/myapp:latest
+
+    - name: Endor Labs Scan
+      uses: endorlabs/github-action@v1.1.4
+      with:
+        namespace: "contoso-hotels"
+        scan_dependencies: false
+        scan_container: true
+        image: myapp:latest
+        project_name: contoso/vulngraphql
+        api_key: ${{ secrets.ENDOR_API_CREDENTIALS_KEY }}
+        api_secret: ${{ secrets.ENDOR_API_CREDENTIALS_SECRET }}
+        enable_github_action_token: false
