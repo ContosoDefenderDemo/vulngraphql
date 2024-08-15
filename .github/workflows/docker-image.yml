@@ -22,8 +22,8 @@ jobs:
       with:
         namespace: "contoso-hotels"
         scan_container: true
-        container: my-image-name:$(date +%s)
-        project: contosodefenderdemo/vulngraphql
+        image: my-image-name:$(date +%s)
+        project_name: contosodefenderdemo/vulngraphql
         api_key: ${{ secrets.ENDOR_API_CREDENTIALS_KEY }}
         api_secret: ${{ secrets.ENDOR_API_CREDENTIALS_SECRET }}
         enable_github_action_token: false
