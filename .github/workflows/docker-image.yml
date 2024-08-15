@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag my-image-name
       
     - name: Endor Labs Scan
       uses: endorlabs/github-action@v1.1.4
@@ -23,7 +23,7 @@ jobs:
         namespace: "contoso-hotels"
         scan_dependencies: false
         scan_container: true
-        image: my-image-name:$(date +%s)
+        image: my-image-name
         project_name: contosodefenderdemo/vulngraphql
         api_key: ${{ secrets.ENDOR_API_CREDENTIALS_KEY }}
         api_secret: ${{ secrets.ENDOR_API_CREDENTIALS_SECRET }}
